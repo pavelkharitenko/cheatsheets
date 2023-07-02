@@ -6,8 +6,8 @@ source /opt/ros/humble/setup.bash
 ```
 - create workspace and src/ inside
 ```
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
+mkdir -p ros2_ws/src
+cd ros2_ws/src
 ```
 
 - install dependencies if needed, change distro to yours
@@ -23,6 +23,7 @@ ros2 pkg create --build-type ament_python package_name --dependencies rclpy exam
 ### edit package
 - update package.xml and setup.py if needed
 - write node inside ros2_ws/src/package_name/package_name/mynode_member_function.py
+- Add new dependencies as tags e.g. `<exec_depend>rclpy</exec_depend>` after license tag inside package.xml
 - add entry point to `console_scripts` list in setup.py:
 ```
 'service = package_name.mynode_member_function:main',
@@ -30,7 +31,7 @@ ros2 pkg create --build-type ament_python package_name --dependencies rclpy exam
 
 ### build package
 
-- install dependencies inside ros2_ws/ root:
+- install dependencies inside root of ros2_ws/:
 
 ```
 rosdep install -i --from-path src --rosdistro humble -y
@@ -44,7 +45,7 @@ colcon build --packages-select package_name
 
 ### run nodes 
 
-- in new terminal, source inside ros2_ws:
+- in new terminal, source inside ros2_ws/:
 
 ```
   source install/setup.bash
