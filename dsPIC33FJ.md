@@ -3,8 +3,8 @@
 ### Include files and spin inside main infinitely
 
 ```
-#include <xc.h>           // will choose the correct include for every controller inside
-#include <p33Fxxxx.h>
+#include <xc.h>			// will choose the correct include for every controller inside
+#include <p33Fxxxx.h>		// Enables macros
 #define FCY 12800000UL 
 #include <libpic30.h>
 
@@ -56,11 +56,27 @@ TRISAbits.TRISA10 = 0; 		// set pin 10 of port A as output
 PORTAbits.RA10 = 1; 		// set pin RA10 to high (if configured as output pin)
 ```
 
-LAT: 
+- LAT: Not important for lab exercise.
+
+Example of outputting a one on port A:
+```
+CLEARBIT(TRISDbits.TRISD6);	// sets pin 6 or port D to 0, means as output
+SETBIT(PORTDbits.PORTD6);	// write 1 to pin 6 on port D, means output HIGH
+```
+A Nop() operation is needed, when changing, reading or writing to pins.
+Both use CLEAR/SET-BIT macro that already includes necessary Nop() command.
 
 
 ### Using available LEDs
-On 
+Five pins, 0, 4, 5, 9 & 10, of Port A are already connected to LEDs. Macros can be used:
+```
+CLEARBIT(TRISAbits.TRISA10); //sets LED4 to output
+Nop(); // necessary
+SETLED(PORTAbits.RA10); //turn on LED4
+CLEARLED(PORTAbits.RA10); //turn off LED4
+// these two macros don't need Nop()
+```
+
 
 ### Common issues
 
