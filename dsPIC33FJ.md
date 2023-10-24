@@ -21,17 +21,26 @@ int main(){
 ...
 #include "lcd.h"
 int main(){
-    lcd_initialize(); // important
-	  lcd_clear(); // Clear the Screen and reset the cursor
+    lcd_initialize();		// important
+    lcd_clear(); 		// Clear the Screen and reset the cursor
     lcd_locate(0, 0);
-    // Print macro
-    lcd_printf("Hello World");
+    
+    lcd_printf("Hello World");  // Print macro
     // Stop
     while(1);
 }
 ```
 
+### Registers
 
+- Timer 1: Used as the counter for the real clock, can be prescaled
+```
+void initTimer1(unsigned int period){
+	T1CON = 0; 		// loads binary 00..0 into T1CON register, sets all digits to 0
+	T1CONbits.TON = 0; 	// sets single part TON of register T1CON through Xbits.Y. Here 0 means disable timer 
+	T1CONbits.TCKPS = 0b10; // Set prescaler to 2 (or binary 10), to scale by 1/64 
+...
+```
 
 ### Common issues
 
