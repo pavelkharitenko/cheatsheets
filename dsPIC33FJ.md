@@ -42,6 +42,23 @@ void initTimer1(unsigned int period){
 ...
 ```
 
+### Input/Output settings
+
+The pins of ports A-G can be set as I/O and configured with:
+
+TRISx: Set data direction of pins at Port X
+```
+TRISA.
+```
+
+PORT: Read or write to respective I/O port: 
+```
+TRISA.
+```
+
+LAT: 
+
+
 ### Common issues
 
 - "Build chain for XC16 not found..."
