@@ -37,27 +37,30 @@ int main(){
 ```
 void initTimer1(unsigned int period){
 	T1CON = 0; 		// loads binary 00..0 into T1CON register, sets all digits to 0
-	T1CONbits.TON = 0; 	// sets single part TON of register T1CON through Xbits.Y. Here 0 means disable timer 
+	T1CONbits.TON = 0; 	// sets single bits TON of register T1CON through Xbits.Y. Here 0 means disable timer 
 	T1CONbits.TCKPS = 0b10; // Set prescaler to 2 (or binary 10), to scale by 1/64 
 ...
 ```
 
 ### Input/Output settings
 
-The pins of ports A-G can be set as I/O and configured with:
+The pins of ports A-G can be set as I/O and controlled with registers **TRIS**, **PORT** & **LAT**:
 
-TRISx: Set data direction of pins at Port X
+- TRISx: Set data direction of pins at Port X, a 1 is input
 ```
-TRISA.
+TRISAbits.TRISA10 = 0; 		// set pin 10 of port A as output
 ```
 
-PORT: Read or write to respective I/O port: 
+- PORTx: Read or write to respective I/O port: 
 ```
-TRISA.
+PORTAbits.RA10 = 1; 		// set pin RA10 to high (if configured as output pin)
 ```
 
 LAT: 
 
+
+### Using available LEDs
+On 
 
 ### Common issues
 
