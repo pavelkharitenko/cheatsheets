@@ -26,6 +26,7 @@ int main(){
     lcd_locate(0, 0);
     
     lcd_printf("Hello World");  // Print macro
+    lcd_printf("Counter = %u", i_counter); // u for print unsigned 
     // Stop
     while(1);
 }
@@ -77,7 +78,17 @@ CLEARLED(PORTAbits.RA10); //turn off LED4
 // these two macros don't need Nop()
 ```
 
+### Interrupts
 
+Triggert by a hardware event, to execute another code segment, deviating from current program.
+
+- Synchronous Interrupts: issued by CPU control unit betweeen instructions. E.g. Kernel function needs to be called at some point in the program.
+
+- Asynchronous Interrupts: issued by other hardware components. E.g. connected device like printer sends ready signal.
+
+Intel x86 interrupt model:
+1. save flags and registers on stack
+2. 
 ### Common issues
 
 - "Build chain for XC16 not found..."
