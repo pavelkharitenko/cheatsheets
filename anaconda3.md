@@ -3,6 +3,11 @@ list environment:
 conda info --envs
 ```
 
+create environment:
+```
+conda create -n myenv python=3.8
+```
+
 activate environment:
 ```
 conda activate myenv
