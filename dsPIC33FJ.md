@@ -80,15 +80,26 @@ CLEARLED(PORTAbits.RA10); //turn off LED4
 
 ### Interrupts
 
-Triggert by a hardware event, to execute another code segment, deviating from current program.
+Triggered by a hardware event, to execute another code segment, deviating from current program.
 
 - Synchronous Interrupts: issued by CPU control unit betweeen instructions. E.g. Kernel function needs to be called at some point in the program.
 
 - Asynchronous Interrupts: issued by other hardware components. E.g. connected device like printer sends ready signal.
 
-Intel x86 interrupt model:
-1. save flags and registers on stack
-2. 
+The dsPIC33F interrupt model:
+```
+1. save program counter and status bits 
+	2. set interrupt priority in bits 0,1,2 of IPL register (other lower or equal interrupts are blocked)
+		3. get ISR address from Interrupt Vector Table
+			4. push used registers on stack
+				5. handle interrupts
+			6. pop used registers
+	7. RETFIE (terminate interrupt and remove IPL)
+8. pop PC and status bits (sb contain programs original priority)
+```
+
+Interrupt Vector Table stores what is to execute when certain ISR is called
+   
 ### Common issues
 
 - "Build chain for XC16 not found..."
