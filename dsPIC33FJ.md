@@ -1,4 +1,7 @@
+### Schematics
+1. Pin Diagram
 
+![dsPIC33FJ256MC710's 100 I/O pins](dsPIC33FJ256MC710_PinDiagram.png)
 
 ### Include files and spin inside main infinitely
 
