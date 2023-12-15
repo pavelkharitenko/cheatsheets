@@ -8,6 +8,11 @@ create environment:
 conda create -n myenv python=3.8
 ```
 
+create from environment.yml:
+```
+conda env create -f environment.yml 
+```
+
 activate environment:
 ```
 conda activate myenv
